@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple to-do list</title>
+    <style>
+        body{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #FBF5E5;
+            display: grid;
+        }
+        .add{
+            border: 10px solid;
+            border-color: #C890A7;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #A35C7A;
+            color: #FBF5E5;
+        }
+        .delete{
+            border: 10px solid;
+            border-color: #C890A7;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #A35C7A;
+            color: #FBF5E5;
+            border-radius: 20px;
+        }
+        button{
+            background-color: black;
+            color: #FBF5E5;
+            padding: 10px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        #taskList li {
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 align="center">
+        To-Do List
+    </h1>
+    <div class="add">
+        <form id="taskForm">
+            <label for="Task">Enter your task:</label>
+            <input id="Task" type="text"><br><br>
+            <button type="button" onclick="addTask()">Add Task</button>
+        </form>
+    </div>
+    <br>
+    <div class="delete">
+        <h2>Tasks to be done:</h2>
+        <ul id="taskList"></ul>
+    </div>
+
+    <script>
+        function addTask(){
+            const input = document.getElementById("Task");
+            const result = input.value.trim();
+            
+            // Don't add empty tasks
+            if (result === "") {
+                return;
+            }
+
+            const li = document.createElement("li");
+            
+            // Create a span for the task text
+            const taskText = document.createElement("span");
+            taskText.textContent = result;
+            li.appendChild(taskText);
+            
+            // Create delete button
+            const deleteButton = document.createElement("button");
+            deleteButton.textContent = "Delete";
+            deleteButton.onclick = function(){
+                li.remove();
+            };
+
+            li.appendChild(deleteButton);
+            document.getElementById("taskList").appendChild(li);
+            
+            // Clear the input field
+            input.value = "";
+            
+            // Return focus to input field
+            input.focus();
+        }
+        
+        // Allow adding tasks with Enter key
+        document.getElementById("Task").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                addTask();
+            }
+        });
+    </script>
+</body>
+</html>

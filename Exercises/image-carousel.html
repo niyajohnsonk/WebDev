@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Image Carousel</title>
+  <style>
+    #image {
+      width: 500px;
+      padding: 10px;
+      display: block;
+      margin: 20px auto;
+    }
+
+    .buttons {
+      text-align: center;
+      padding: 10px;
+    }
+
+    button {
+      margin: 0 10px;
+      padding: 10px 20px;
+    }
+  </style>
+</head>
+<body>
+  <img id="image" src="image1 (1).png" alt="Carousel Image" />
+
+  <div class="buttons">
+    <button onclick="prev()">Previous</button>
+    <button onclick="next()">Next</button>
+  </div>
+
+  <script>
+    const images = [
+      "image1 (1).png",
+      "image1 (2).png",
+      "image1 (3).png",
+      "image1 (4).png",
+      "image1 (5).png"
+    ];
+
+    let currentIndex = 0;
+
+    function showImage(index) {
+      document.getElementById("image").src = images[index];
+    }
+
+    function prev() {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      showImage(currentIndex);
+    }
+
+    function next() {
+      currentIndex = (currentIndex + 1) % images.length;
+      showImage(currentIndex);
+    }
+  </script>
+</body>
+</html>

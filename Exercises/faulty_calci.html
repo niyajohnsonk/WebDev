@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faulty Calculator</title>
+    <style>
+        body{
+            background-color: blanchedalmond;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        form{
+            padding: 20px;
+            margin: 50px;
+            border: 2px solid;
+            background-color: rgb(208, 208, 93);
+        }
+        label,input{
+            padding: 10px;
+            margin-top: 10px;
+        }
+        button{
+            padding: 5px;
+            margin-top: 10px;
+            font-size: large;
+            border: 3px solid;
+        }
+    </style>
+</head>
+<body>
+    <h3>This is a faulty calculator.</h3>
+    <form align="center">
+        <label for="input1">Enter number 1:</label>
+        <input type="number" id="input1"><br>
+
+        <label for="input2">Enter number 2:</label>
+        <input type="number" id="input2"><br>
+
+        <label for="operation">Pick an operation:</label>
+
+        <input type="radio" id="plus" name="op" value="plus"><label for="plus">+</label>
+        <input type="radio" id="minus" name="op" value="minus"><label for="minus">-</label>
+        <input type="radio" id="divide" name="op" value="divide"><label for="divide">/</label>
+        <input type="radio" id="multiply" name="op" value="multiply"><label for="multiply">*</label>
+        
+        <br><button type="button" onclick="operation()">Result</button>
+    </form>
+    <div id="output"></div>
+
+    <script>
+        function operation(){
+            let a=Math.random();
+            let num1=+document.getElementById("input1").value;
+            let num2=+document.getElementById("input2").value;
+            let op=document.querySelector('input[name="op"]:checked')?.value;
+            let result;
+            if (a>0.1){
+                switch(op){
+                    case 'plus': result=num1+num2;break;
+                    case 'minus':result=num1-num2;break;
+                    case 'divide':result=num1/num2;break;
+                    case 'multiply':result=num1*num2;break;
+                }
+            }
+            else{
+                switch(op){
+                    case 'plus': result=num1-num2;break;
+                    case 'minus':result=num1/num2;break;
+                    case 'divide':result=num1**num2;break;
+                    case 'multiply':result=num1+num2;break;
+                }
+            }
+            document.getElementById("output").textContent="Result:"+result;
+        }
+    </script>
+    
+</body>
+</html>
