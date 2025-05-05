@@ -1,0 +1,23 @@
+body{
+    font-family:cursive;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+h1{
+    text-align: center;
+}
+
+table{
+   border-collapse: collapse;
+   margin: 2px auto;
+   margin-top: 30px;
+   padding: 30px;
+}
+
+th,td{
+    border: 2px solid;
+    padding: 5px;
+    margin: auto;
+}
